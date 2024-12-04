@@ -35,11 +35,7 @@ mongoose.connection.on('disconnected', () => {
 router.get('/', async function(req, res, next) {
   try {
       const member = await collection.find().toArray();
-      console.info(res.json(member));
-    //   let username = req.query.username;
-    //   let user = await User.find({ username: username }); // MongoDB에서 사용자 조회
-      
-      if (user) {
+      if (member) {
           res.json({
               code: 200,
               user: member
@@ -57,7 +53,6 @@ router.get('/', async function(req, res, next) {
 
 /* POST users. */
 router.post('/', async function(req, res, next) {
-    console.info(req);
   try {
 
       const result = await db.collection('member').insertOne({
